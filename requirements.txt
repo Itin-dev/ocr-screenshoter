@@ -1,0 +1,8 @@
+PyQt5
+pyinstaller
+pytesseract
+pillow
+pyautogui
+pynput
+mss
+plyer 
