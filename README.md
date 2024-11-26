@@ -1,3 +1,7 @@
+Here’s an updated version of the `README.md` file with the added section explaining the utility script `regionpicker.py` that can be run before the main OCR script to help with region selection.
+
+---
+
 # Screenshot OCR Script
 
 This Python script captures screenshots of specific regions of your screen with a single press of the **F8** key. It processes the screenshots using Optical Character Recognition (OCR) to extract text from the images and stores the results in an SQLite database.
@@ -31,7 +35,7 @@ If you don't have Python installed, follow these steps:
 After installing Python, open the Command Prompt (`cmd`) and run the following commands to install required libraries:
 
 ```bash
-pip install pytesseract mss pillow pynput sqlite3 plyer
+pip install pytesseract mss pillow pynput sqlite3 plyer pyautogui
 ```
 
 ### 3. Install Tesseract OCR
@@ -55,14 +59,27 @@ pytesseract.pytesseract.tesseract_cmd = os.path.join(
 
 If your installation path differs, update the path accordingly.
 
-### 5. Run the Script
+### 5. Run the Region Picker Utility (Optional)
+Before running the main script, you can use the **region picker utility** to help you select screen regions for OCR. This utility allows you to get the precise coordinates of your desired regions.
+
+To use it, navigate to the folder where your scripts are located and run the following:
+
+```bash
+python utils/regionpicker.py
+```
+
+This script will display the current mouse position on the screen. Move your mouse to the top-left corner of a region, and the coordinates will be printed. Then move the mouse to the bottom-right corner of the region. The coordinates can be used to define the screen regions in the main script.
+
+- **Press `Ctrl+C` to stop the utility** once you've captured the desired region coordinates.
+
+### 6. Run the Main Script
 After installing Python and the dependencies, save the provided Python script as `ocr.py` on your computer. Then, open the Command Prompt, navigate to the folder containing `ocr.py`, and run:
 
 ```bash
 python ocr.py
 ```
 
-### 6. Using the Script
+### 7. Using the Script
 - **Press F8** to capture the screenshots and perform OCR on the predefined regions.
 - **Press Escape** to exit the script.
 
@@ -85,7 +102,7 @@ python ocr.py
    - Update the database initialization and insert queries to match your changes.
 
 4. **Folder Structure**:
-   - The script saves screenshots in a timestamped folder. If you prefer to organize screenshots differently, you can modify the `screenshots_folder` path:
+   - The script saves screenshots in a `screenshots` folder, and each capture is stored in a subfolder named with the current timestamp. You can modify the folder path to suit your preference:
    ```python
    screenshots_folder = os.path.join("your_folder_name", timestamp)
    ```
@@ -154,4 +171,4 @@ For further questions or support, please contact me at [your email/contact].
 
 ---
 
-This `README.md` provides a detailed explanation of how to install, run, and modify the script for your specific needs.
+This updated `README.md` provides a complete guide to setting up the script, using the region picker utility, and customizing the script for specific needs.
